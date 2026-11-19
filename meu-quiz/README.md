@@ -1,15 +1,3 @@
-# Meu Quiz — Jogo Educacional para o Ensino de Gerência de Projetos
-
-Aplicação web educacional que integra a simulação do gerenciamento de uma empresa de Tecnologia da Informação (TI) a um sistema de quizzes interativos. O projeto foi desenvolvido como **Trabalho de Conclusão de Curso (TCC)** para apoiar o ensino da disciplina de **Gerência de Projetos**, permitindo que o professor crie atividades avaliativas e o estudante responda às questões enquanto gerencia uma equipe e resolve chamados técnicos.
-
-* **Curso:** Bacharelado em Engenharia de Computação — Faculdade de Ciências Exatas e Tecnologia (FACET)
-* **Instituição:** Universidade Federal da Grande Dourados (UFGD)
-* **Autores:** Guilherme Manuel dos Santos Gibelli e Kethlyn Rayane C. Ferreira
-* **Orientação:** Prof. Dr. Felipe Jose Carbone
-* **Ano:** 2026
-
----
-
 ## Visão Geral e Funcionalidades
 
 O sistema é dividido em dois ambientes integrados que se comunicam em tempo real por meio do banco de dados:
