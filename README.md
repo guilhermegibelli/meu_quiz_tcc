@@ -1,4 +1,4 @@
-# Jogo Educacional para o Ensino de Gerência de Projetos
+# DESENVOLVIMENTO DE UM JOGO EDUCACIONAL COMO FERRAMENTA DE APOIO AO ENSINO DE GERÊNCIA DE PROJETOS
 
 Aplicação web desenvolvida como Trabalho de Conclusão de Curso (TCC) no curso de **Bacharelado em Engenharia de Computação** da **Universidade Federal da Grande Dourados (UFGD)** — Faculdade de Ciências Exatas e Tecnologia (FACET).
 
