@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comic+Neue:wght@400;700&display=swap');
+
+/* ===================================================
+   FUNDO GERAL E TEXTURA DE MESA DE TRABALHO
+   =================================================== */
+
+body {
+  background-color: #3e2723; /* Tom de mesa de madeira escura */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.4) 15%, transparent 16%);
+  background-size: 20px 20px;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: #2c3e50;
+  margin: 0;
+  padding: 40px 15px;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Títulos estilo escrita a lápis/caneta */
+.titulo-lapis {
+  font-family: 'Caveat', cursive;
+  font-size: 2.3rem;
+  color: #1a252f;
+  letter-spacing: 1px;
+}
+
+/* ===================================================
+   A PRANCHETA DE MADEIRA (CONTAINER 3D)
+   =================================================== */
+
+.prancheta-madeira {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 25px 35px 25px; /* Espaço para o prendedor no topo */
+  position: relative;
+  perspective: 1500px; /* Sensação de profundidade 3D */
+  
+  /* Textura de Madeira Realista */
+  background-color: #b7814a;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 4px),
+    linear-gradient(180deg, #d39e61 0%, #a06932 50%, #835222 100%);
+  
+  border: 4px solid #4a2d11;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* Clipe Metálico Preendedor no topo */
+.prancheta-clip-metal {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 55px;
+  background: linear-gradient(180deg, #e0e0e0 0%, #9e9e9e 50%, #616161 100%);
+  border: 3px solid #333;
+  border-radius: 8px 8px 15px 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.8);
+  z-index: 20;
+}
+
+.prancheta-clip-metal::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 12px;
+  background: #2b2b2b;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.prancheta-clip-metal::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 12px;
+  height: 12px;
+  background: #757575;
+  border-radius: 50%;
+  box-shadow: 166px 0 0 #757575, inset 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* ===================================================
+   FOLHA DE CADERNO ESCOLAR PRESA NA PRANCHETA
+   =================================================== */
+
+.folha-caderno-pagina {
+  background-color: #fffef7;
+  /* Linha vermelha de margem e linhas azuis pautadas */
+  background-image: 
+    linear-gradient(90deg, transparent 59px, #ffadad 59px, #ffadad 61px, transparent 61px),
+    linear-gradient(#e1e8ed 1px, transparent 1px);
+  background-size: 100% 100%, 100% 32px;
+  border: 1px solid #dcd6c8;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25), 0 2px 5px rgba(0,0,0,0.1);
+  padding: 40px 30px 40px 80px; /* Espaço para a margem da folha */
+  position: relative;
+  z-index: 10;
+  
+  /* Configuração para Animação 3D de virar */
+  transform-origin: left center; /* Gira presa pela borda esquerda */
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.4s ease;
+  backface-visibility: hidden;
+}
+
+/* Estado da Folha durante a Animação (Virando) */
+.folha-caderno-pagina.virando-pagina {
+  transform: rotateY(-90deg) scale(0.95);
+  opacity: 0.3;
+}
+
+/* CAIXAS E CARDS (Papel Recortado/Amarelado) */
+.caixa-rabisco {
+  background: #fffdf5;
+  border: 2px solid #2b2b2b;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 5px 5px 0px #2b2b2b;
+  padding: 22px;
+  position: relative;
+}
+
+/* Efeito Fita Adesiva (Durex) no topo */
+.caixa-rabisco::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 40%;
+  width: 100px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transform: rotate(-3deg);
+  backdrop-filter: blur(1px);
+}
+
+/* ITEM DA LISTA DE PROJETOS */
+.card-projeto-item {
+  border: 2px solid #2b2b2b;
+  border-radius: 12px 3px 15px 4px/4px 15px 3px 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #fff8e7; /* Amarelo Post-it Suave */
+  box-shadow: 4px 4px 0px #2b2b2b;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-projeto-item:hover {
+  transform: translateY(-2px) rotate(-0.5deg);
+  box-shadow: 6px 6px 0px #2b2b2b;
+}
+
+/* BOTÕES ESTILO RABISCO 3D */
+.btn-rabisco {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border: 2px solid #2b2b2b;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 3px 3px 0px #2b2b2b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-rabisco:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #2b2b2b;
+}
+
+.btn-rabisco:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #2b2b2b;
+}
+
+.controles-pilha {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  display: flex;
+  gap: 3px;
+}
+
+.btn-excluir-item {
+  min-width: 23px;
+  height: 23px;
+  padding: 1px 5px;
+  border: 1.5px solid #2b2b2b;
+  border-radius: 5px 8px 4px 7px;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #2b2b2b;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-excluir-item {
+  background: #ffd6d6;
+  color: #c0392b;
+}
+
+.btn-excluir-item:hover {
+  transform: translate(-1px, -1px) rotate(-2deg);
+  box-shadow: 3px 3px 0 #2b2b2b;
+}
+
+.btn-excluir-item:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #2b2b2b;
+}
+
+.btn-trocar-ordem {
+  align-self: flex-end;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: -5px 0;
+  border: 0;
+  border-radius: 0;
+  background: #fffdf5;
+  color: #2b2b2b;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 rgba(45, 52, 54, 0.18);
+  position: relative;
+  z-index: 3;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-trocar-ordem:hover {
+  transform: translateY(-1px) rotate(-2deg) scale(1.03);
+  box-shadow: 3px 3px 0 rgba(45, 52, 54, 0.22);
+}
+
+.btn-trocar-ordem:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 rgba(45, 52, 54, 0.18);
+}
+
+/* INPUTS ESTILO PÁGINA RABISCADA */
+.input-rabisco {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #2b2b2b;
+  border-radius: 12px 2px 15px 3px/3px 15px 2px 12px;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 1rem;
+  background: #fffbe6;
+  outline: none;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.input-rabisco:focus {
+  background: #ffffff;
+  border-color: #2980b9;
+}
+
+/* ===================================================
+   MODAIS E CONSTRUTOR DE BLOCOS
+   =================================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30, 30, 30, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.modal-excluir {
+  max-width: 420px;
+  width: 100%;
+  background: #fffbe6;
+  text-align: center;
+  transform: rotate(-1deg);
+  padding: 25px;
+}
+
+/* ===================================================
+   BILHETE DE NOTIFICAÇÃO (POST-IT COLADO NA MARGEM DIREITA)
+   =================================================== */
+
+.notificacao-toast {
+  position: fixed; /* Fica preso na TELA do navegador, não na folha! */
+  top: 45px;                   /* Alinhado na altura do topo da folha */
+  right: max(20px, calc(50vw - 480px)); /* Cola na margem direita da folha central */
+  
+  background: #ffeb3b;        /* Amarelo Post-it bem chamativo */
+  color: #2c3e50;
+  border: 2px solid #2b2b2b;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding: 10px 20px;
+  box-shadow: 6px 6px 0px #2b2b2b;
+  z-index: 999999;            /* Fica acima de TUDO na tela */
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+  
+  /* Ângulo de post-it colado à mão e animação de colar */
+  transform: rotate(3deg);
+  animation: colarPostIt 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notificacao-toast-erro {
+  background: #f8d7da;
+  color: #7f1d1d;
+  border-color: #b42318;
+}
+
+/* Animação simulando a colagem do post-it na folha (pressão) */
+@keyframes colarPostIt {
+  0% {
+    opacity: 0;
+    transform: scale(1.3) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(3deg);
+  }
+}
+
+/* Ajuste Responsivo para Celulares */
+@media (max-width: 1020px) {
+  .notificacao-toast {
+    right: 20px; /* Gruda na borda da tela em telas pequenas */
+  }
+}

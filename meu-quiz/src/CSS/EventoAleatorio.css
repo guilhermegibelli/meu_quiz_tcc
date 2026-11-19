@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comic+Neue:wght@400;700&display=swap');
+
+.evento-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(37, 24, 18, 0.72);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  font-family: 'Comic Neue', cursive;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.evento-card {
+  background: #fffdf3;
+  border: 1px solid #d8cda9;
+  border-radius: 3px;
+  width: min(100%, 560px);
+  padding: 34px 30px 30px;
+  box-shadow: 8px 10px 0 rgba(35, 25, 18, 0.28), inset 0 0 34px rgba(218, 198, 143, 0.22);
+  text-align: left;
+  color: #293241;
+  position: relative;
+  animation: popIn 0.3s ease-out;
+  transform: rotate(-0.7deg);
+}
+
+@keyframes popIn {
+  0% { 
+    transform: scale(0.8); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+.evento-fita {
+  display: inline-block;
+  background: #f6c453;
+  color: #5a3a13;
+  padding: 6px 14px;
+  margin: -48px 0 18px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transform: rotate(1.5deg);
+}
+
+.evento-canto {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #e8ddbb 0 49%, transparent 50%);
+}
+
+.evento-titulo {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(36px, 7vw, 50px);
+  line-height: 1;
+  color: #263f6b;
+  margin: 0 38px 14px 0;
+}
+
+.evento-descricao {
+  font-size: 22px;
+  line-height: 1.35;
+  background: repeating-linear-gradient(to bottom, transparent 0 29px, #dce7ed 30px);
+  border-top: 1px solid #e3d8b8;
+  border-bottom: 1px solid #e3d8b8;
+  padding: 12px 8px 14px;
+  margin: 0 0 22px;
+}
+
+.evento-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.btn-opcao {
+  font-family: 'Comic Neue', cursive;
+  font-size: 19px;
+  padding: 13px 15px;
+  border: 2px solid #27364f;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 3px 4px 0 #27364f;
+  text-align: left;
+}
+
+.btn-opcao:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 6px 0 #27364f;
+}
+
+.btn-opcao:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 2px 0 #27364f;
+}
+
+.btn-opcao-a {
+  background-color: #f9d77e;
+  color: #283342;
+}
+
+.btn-opcao-b {
+  background-color: #d9e8ee;
+  color: #283342;
+}
+
+.opcao-conteudo {
+  display: grid;
+  gap: 4px;
+}
+
+.opcao-conteudo strong {
+  font-size: 22px;
+}
+
+.opcao-conteudo small {
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.opcao-letra {
+  flex: 0 0 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-weight: 700;
+}

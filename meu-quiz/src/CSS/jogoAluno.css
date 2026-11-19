@@ -1,0 +1,1081 @@
+/* Fonte estilo caligrafia à mão/lápis */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+
+/* Regra global para a fonte desenhada */
+.aluno-game-container, 
+.aluno-game-container * {
+  font-family: 'Caveat', cursive !important;
+  color: #2c3e50;
+}
+
+.aluno-game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 18px;
+}
+
+/* ===================================================
+   1. FOLHA DE PROVA DE CADERNO (LOGIN / FASE 1)
+   =================================================== */
+.folha-prova-caderno {
+  background-color: #fdfbf7;
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(0, 0, 0, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 20%, rgba(0, 0, 0, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 40% 70%, rgba(0, 0, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 80%, rgba(0, 0, 0, 0.05) 0%, transparent 45%),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0%, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%),
+    repeating-linear-gradient(#fdfbf7 0px, #fdfbf7 31px, #e1dcd3 32px);
+  
+  border: 2px solid #2b2b2b;
+  border-radius: 4px;
+  padding: 30px 35px 30px 55px;
+  max-width: 650px;
+  margin: 20px auto;
+  box-shadow: 
+    4px 6px 12px rgba(0, 0, 0, 0.12),
+    3px 3px 0px #2b2b2b;
+    
+  position: relative;
+  overflow: hidden;
+}
+
+.folha-prova-caderno::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 45px;
+  width: 2px;
+  background-color: #ffb3b3;
+  z-index: 1;
+}
+
+.conteudo-folha {
+  position: relative;
+  z-index: 3;
+}
+
+.doodle {
+  position: absolute;
+  stroke: #2c3e50;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.doodle-coracao { top: 15px; left: 10px; width: 26px; height: 26px; transform: rotate(-10deg); }
+.doodle-smile { bottom: 15px; left: 10px; width: 28px; height: 28px; transform: rotate(-5deg); }
+.doodle-estrela { top: 15px; right: 175px; width: 30px; height: 30px; transform: rotate(12deg); }
+.doodle-raio { top: 175px; right: 25px; width: 24px; height: 34px; transform: rotate(15deg); }
+
+.cabecalho-topo-prova {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed #2b2b2b;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.titulo-prova {
+  font-size: 2.5rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.subtitulo-prova {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.caixa-nota-prova {
+  border: 2px solid #c0392b;
+  color: #c0392b !important;
+  padding: 4px 14px;
+  border-radius: 6px;
+  text-align: center;
+  transform: rotate(-4deg);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.caixa-nota-prova span {
+  display: block;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.caixa-nota-prova strong {
+  font-size: 1.9rem;
+}
+
+.campo-nome-aluno {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 25px 0 20px 0;
+}
+
+.label-nome {
+  font-size: 1.9rem;
+  white-space: nowrap;
+}
+
+.input-lapis-prova {
+  border: none;
+  border-bottom: 2px solid #2b2b2b;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 2.5rem;
+  padding-left: 10px;
+  line-height: 1;
+}
+
+.input-lapis-prova::placeholder {
+  font-size: 1.4rem;
+  color: #a0a0a0;
+}
+
+.btn-marca-texto-amarelo {
+  background: #fff066;
+  color: #2c3e50 !important;
+  border: none;
+  padding: 10px 20px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: inset 0 0 8px rgba(241, 196, 15, 0.4), 2px 3px 0px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  clip-path: polygon(0% 4%, 99% 1%, 100% 94%, 1% 98%);
+}
+
+.btn-marca-texto-amarelo:hover {
+  background: #ffeb3b;
+  transform: scale(1.01);
+}
+
+.btn-marca-texto-amarelo:active {
+  transform: scale(0.99);
+}
+
+.mensagem-erro-aluno {
+  color: #c0392b !important;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin: -10px 0 15px 0;
+  animation: balancarErro 0.3s ease-in-out;
+}
+
+@keyframes balancarErro {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+/* ===================================================
+   2. JANELAS MODAIS
+   =================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-aluno-box {
+  background: #ffffff !important;
+  color: #2c3e50 !important;
+  max-width: 480px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  border: 3px solid #2c3e50;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+  z-index: 1001;
+}
+
+.modal-aluno-box h2 {
+  color: #2c3e50 !important;
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.modal-aluno-box p {
+  color: #34495e !important;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+/* ===================================================
+   3. SISTEMA DE NOTIFICAÇÕES VISUAIS (TOASTS)
+   =================================================== */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast-item {
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #fff !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border: 2px solid #2c3e50;
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-info { background: #3498db; }
+.toast-sucesso { background: #2ecc71; }
+.toast-alerta { background: #e67e22; }
+.toast-erro { background: #e74c3c; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* =========================================================
+   4. LAYOUT PRINCIPAL DO JOGO
+   ========================================================= */
+
+.container-jogo-principal {
+  width: 95vw;
+  max-width: 1200px;
+  height: 90vh;
+  max-height: 700px;
+  background-color: #a0684d; /* Cor da moldura marrom */
+  border-radius: 12px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: 1fr 140px;
+  gap: 15px;
+  position: relative;
+}
+
+/* 4.1 ÁREA DOS BONECOS (Mesa Bege Superior Esquerda) */
+.area-escritorio-grid {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  background-color: #f5f0eb;
+  border-radius: 8px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.estacao-trabalho {
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px dashed #d0c8b8;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.estacao-trabalho:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.estacao-trabalho.exausto {
+  background-color: #ffe6e6;
+}
+
+.estacao-topo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-cargo {
+  background: #4a5568;
+  color: #fff !important;
+  font-size: 1rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-cafe-mini {
+  background: #d69e2e;
+  color: #fff !important;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 0.8rem;
+}
+
+.btn-cafe-mini:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.barra-energia-container {
+  width: 100%;
+}
+
+.barra-energia-container progress {
+  width: 100%;
+  height: 8px;
+}
+
+/* 4.2 MURAL DE TAREFAS (Área Inferior Azul Clarinho) */
+.mural-tarefas-inferior {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: #dceefb;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  align-items: center;
+}
+
+.card-tarefa-mural {
+  min-width: 180px;
+  background: #ffffff;
+  border: 2px solid #63b3ed;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.card-tarefa-mural.drop-target {
+  border: 2px dashed #27ae60;
+  background: #e8f8f5;
+}
+
+.card-tarefa-mural.em-andamento {
+  border-color: #ecc94b;
+  background: #fffff0;
+}
+
+.tag-cargo-exigido {
+  font-size: 1rem;
+  color: #3182ce;
+  font-weight: bold;
+}
+
+.card-tarefa-mural h4 {
+  margin: 4px 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.card-tarefa-rodape {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #2b6cb0;
+  font-weight: bold;
+}
+
+.sem-tarefas {
+  width: 100%;
+  text-align: center;
+  color: #4a5568;
+  font-style: italic;
+}
+
+/* 4.3 PAINEL LATERAL DIREITO */
+.painel-lateral-direito {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Bloco dos Atributos Superior */
+.caixa-atributos {
+  background-color: #f7fafc;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.atributo-item {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffffff !important;
+}
+
+.attr-dinheiro { background-color: #27ae60; }
+.attr-tempo { background-color: #f1c40f; color: #333 !important; }
+.attr-status { background-color: #e74c3c; }
+
+/* Bloco de Anúncios Rosa Inferior */
+.painel-anuncios-rosa {
+  background-color: #ffb6c1;
+  border-radius: 8px;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.titulo-anuncios {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #4a5568;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.lista-anuncios-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.lista-anuncios-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lista-anuncios-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.item-anuncio {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.hora-anuncio {
+  display: block;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.texto-anuncio {
+  margin: 2px 0 0 0;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+.anuncio-alerta { border-left: 4px solid #e53e3e; }
+.anuncio-sucesso { border-left: 4px solid #38a169; }
+.anuncio-erro { border-left: 4px solid #dd6b20; }
+.anuncio-info { border-left: 4px solid #3182ce; }
+
+/* ===================================================
+   5. BONECOS E ANIMAÇÕES DE STATUS
+   =================================================== */
+
+.stickman-icon {
+  width: 45px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.stickman-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes enrolandoAnim {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes popupBalao {
+  0% { transform: scale(0) translateY(10px); opacity: 0; }
+  80% { transform: scale(1.1) translateY(-2px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.card-funcionario.status-enrolando {
+  background: #fff3cd !important;
+  border-style: dashed !important;
+  animation: enrolandoAnim 1.5s infinite ease-in-out;
+}
+
+.card-funcionario.status-sumido {
+  opacity: 0.35;
+  filter: grayscale(100%);
+  border-color: #7f8c8d !important;
+}
+
+.card-funcionario.status-saida {
+  background: #fce4ec !important;
+  border-color: #e91e63 !important;
+}
+
+.balao-fala-papel {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid #2c3e50;
+  padding: 3px 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  animation: popupBalao 0.3s ease-out forwards;
+}
+
+.balao-fala-papel::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: #2c3e50 transparent;
+  display: block;
+  width: 0;
+}
+
+/* ===================================================
+   6. ELEMENTOS EM DESTAQUE E OVERLAY DO TUTORIAL
+   =================================================== */
+
+.destaque-tutorial-ativo {
+  position: relative !important;
+  z-index: 1000001 !important;
+  outline: none !important;
+  box-shadow: inset 0 0 0 4px #dc2626, 0 0 18px 4px rgba(220, 38, 38, 0.75) !important;
+  filter: brightness(1.18) saturate(1.12);
+  border-radius: 8px !important;
+  animation: focoTutorial 1.4s ease-in-out infinite;
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+@keyframes focoTutorial {
+  0%, 100% { box-shadow: inset 0 0 0 4px #dc2626, 0 0 14px 3px rgba(220, 38, 38, 0.7) !important; }
+  50% { box-shadow: inset 0 0 0 5px #ef4444, 0 0 22px 5px rgba(239, 68, 68, 0.9) !important; }
+}
+
+.destaque-tutorial-ativo.aba-discreta {
+  transform: translateX(0) !important;
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.tutorial-overlay-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  z-index: 1000000 !important;
+  pointer-events: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 72px 12px 12px;
+  overflow: hidden;
+}
+
+.aba-discreta.manual {
+  background-color: #fff785;
+  color: #2c3e50;
+}
+
+.container-abas-divisoria {
+  z-index: 1100;
+}
+
+.container-abas-divisoria:has(.aba-cafe-tutorial.destaque-tutorial-ativo),
+.container-abas-divisoria:has(.aba-proximo-tutorial.destaque-tutorial-ativo) {
+  z-index: 1000001;
+}
+
+.container-abas-divisoria:has(.aba-cafe-tutorial.destaque-tutorial-ativo) > .aba-discreta:not(.destaque-tutorial-ativo),
+.container-abas-divisoria:has(.aba-proximo-tutorial.destaque-tutorial-ativo) > .aba-discreta:not(.destaque-tutorial-ativo) {
+  filter: brightness(0.75);
+  pointer-events: none;
+}
+
+.icone-manual {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.aviso-manual-inicial {
+  position: fixed;
+  left: 224px;
+  top: 16%;
+  z-index: 1101;
+  width: 210px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fffef0;
+  border: 2px solid #2d3436;
+  border-radius: 8px;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.2);
+  color: #fffef0;
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+}
+
+.aviso-manual-inicial::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 22%;
+  border-width: 8px 10px 8px 0;
+  border-style: solid;
+  border-color: transparent #fffef0 transparent transparent;
+}
+
+.aviso-manual-inicial button {
+  align-self: flex-end;
+  border: 0;
+  background: transparent;
+  color: #7f8c8d;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.cabecalho-manual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed rgba(44, 62, 80, 0.3);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.btn-fechar-manual {
+  border: 1px solid #2c3e50;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  color: #2c3e50;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.seta-tutorial-global {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1000001 !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+}
+
+.linha-seta-tutorial {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-dasharray: 7 6;
+  stroke-linecap: round;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.45));
+  animation: caminhoAnimado 1.2s linear infinite;
+}
+
+/* Post-it Base de Tutorial */
+.balao-tutorial {
+  position: fixed !important;
+  width: min(650px, 88vw) !important;
+  max-height: 86vh !important;
+  box-sizing: border-box !important;
+  margin-top: 28px;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+  border-radius: 4px 4px 4px 24px !important;
+  box-shadow: 6px 12px 24px rgba(0, 0, 0, 0.35) !important;
+  z-index: 1000002 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) rotate(-1deg) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Rabiscos Temáticos nos Post-its */
+.doodle-postit {
+  position: absolute !important;
+  top: 10px !important;
+  right: 12px !important;
+  width: 32px !important;
+  height: 32px !important;
+  opacity: 0.7 !important;
+  pointer-events: none !important;
+}
+
+/* Cores dos Post-its */
+.balao-tutorial.postit-amarelo { background-color: #fff785 !important; border: 2px solid #f1c40f !important; }
+.balao-tutorial.postit-rosa { background-color: #ff7eb9 !important; border: 2px solid #e84393 !important; }
+.balao-tutorial.postit-azul { background-color: #7afcff !important; border: 2px solid #00cec9 !important; }
+
+/* Tipografia do Balão de Tutorial */
+.balao-tutorial h3 {
+  margin: 0 0 8px 0 !important;
+  color: #2c3e50 !important;
+  font-size: 1.6rem !important;
+  font-weight: bold !important;
+  border-bottom: 2px dashed rgba(44, 62, 80, 0.25) !important;
+  padding-bottom: 4px 
+}
+
+.balao-tutorial p {
+  color: #2c3e50 !important;
+  font-size: 1.15rem !important;
+  line-height: 1.3 !important;
+  margin: 0 0 16px 0 !important;
+  font-weight: 600 !important;
+}
+
+/* Botões do Tutorial */
+.acoes-tutorial-rodape {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-proximo-tutorial {
+  background: #2c3e50 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  flex: 1 !important;
+  font-size: 1.3rem !important;
+  box-shadow: 2px 3px 0px rgba(0,0,0,0.2) !important;
+  transition: transform 0.1s;
+}
+
+.btn-proximo-tutorial:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secundario-tutorial {
+  background: #95a5a6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+}
+
+.btn-saltar-tutorial {
+  background: transparent !important;
+  border: none !important;
+  color: #7f8c8d !important;
+  font-size: 1.1rem !important;
+  cursor: pointer !important;
+  margin-top: 8px !important;
+  text-decoration: underline !important;
+}
+
+/* Indicadores de Passo (Pontos) */
+.indicadores-passo {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.ponto-passo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(44, 62, 80, 0.3);
+}
+
+.ponto-passo.ativo {
+  background: #2c3e50;
+  width: 18px;
+  border-radius: 4px;
+}
+
+/* Setas Animadas (Caminho Mágico SVG) */
+.container-seta-tutorial {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+}
+
+.container-seta-tutorial.posicao-direita {
+  right: -80px;
+  top: 10px;
+}
+
+.container-seta-tutorial.posicao-baixo {
+  bottom: -80px;
+  left: 40%;
+  transform: rotate(90deg);
+}
+
+.container-seta-tutorial.posicao-esquerda {
+  left: -80px;
+  top: 10px;
+  transform: scaleX(-1);
+}
+
+.svg-seta-precisa {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.svg-seta-precisa path {
+  animation: caminhoAnimado 1.2s linear infinite;
+}
+
+@keyframes caminhoAnimado {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
+.mapa-manual {
+  width: 100%;
+  height: auto;
+  margin: 2px 0 10px;
+  border: 2px solid rgba(44, 62, 80, 0.45);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.mapa-prancheta {
+  fill: #fffef0;
+  stroke: #2c3e50;
+  stroke-width: 3;
+}
+
+.mapa-linhas {
+  stroke: rgba(116, 185, 255, 0.32);
+  stroke-width: 1;
+}
+
+.mapa-linha-caderno {
+  stroke: rgba(116, 185, 255, 0.35);
+  stroke-width: 1;
+}
+
+.mapa-area {
+  fill: rgba(255, 255, 255, 0.7);
+  stroke: #2c3e50;
+  stroke-width: 2;
+  transition: fill 0.2s, stroke-width 0.2s;
+}
+
+.mapa-area-ativa {
+  fill: #fecaca;
+  stroke: #dc2626;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 5px rgba(220, 38, 38, 0.9));
+}
+
+.mapa-titulo {
+  fill: #2c3e50;
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.mapa-legenda {
+  fill: #475569;
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+}
+
+.mapa-mesa {
+  fill: #f8fafc;
+  stroke: #94a3b8;
+  stroke-width: 2;
+}
+
+.mapa-pessoa {
+  fill: #f59e0b;
+  stroke: #2c3e50;
+  stroke-width: 2;
+}
+
+.mapa-barra {
+  stroke: #22c55e;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.mapa-cartao {
+  fill: #dbeafe;
+  stroke: #2563eb;
+  stroke-width: 1.5;
+}
+
+.mapa-megafone {
+  fill: none;
+  stroke: #be185d;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mapa-aba {
+  stroke: #2c3e50;
+  stroke-width: 4;
+}
+
+.mapa-rh { fill: #0984e3; stroke: #123047; }
+.mapa-cafe { fill: #d97706; stroke: #5b2700; }
+.mapa-resumo { fill: #16a34a; stroke: #064e22; }
+.mapa-aba.mapa-area-ativa { fill: #dc2626 !important; stroke: #7f1d1d; }
+
+.mapa-aba-texto {
+  fill: #ffffff;
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mapa-seta {
+  fill: none;
+  stroke: #2c3e50;
+  stroke-width: 2.5;
+  stroke-dasharray: 6 4;
+  stroke-linecap: round;
+}
+
+.mapa-hora {
+  fill: #1a2215;
+  font-family: 'VT323', monospace;
+  font-size: 30px;
+}
+
+.mapa-rendimento {
+  fill: #d1fae5;
+  stroke: #16a34a;
+  stroke-width: 2;
+}
+
+.mapa-grafico {
+  fill: none;
+  stroke: #16a34a;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mapa-anuncios {
+  fill: #fff1f2;
+  stroke: #be185d;
+  stroke-width: 2;
+}
+
+.mapa-anuncio-card {
+  fill: #ffffff;
+  stroke: #be185d;
+  stroke-width: 1;
+}
+
+.banner-pausa-jogo {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  border: 3px solid #2d3436;
+  border-radius: 30px;
+  background: #f59e0b;
+  color: #ffffff;
+  box-shadow: 0 6px 0 #2d3436;
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  animation: avisoPausaManual 1.4s ease-in-out infinite;
+}
+
+.banner-pausa-jogo span {
+  padding-left: 12px;
+  border-left: 2px solid rgba(255, 255, 255, 0.65);
+}
+
+@keyframes avisoPausaManual {
+  0%, 100% { box-shadow: 0 6px 0 #2d3436; }
+  50% { box-shadow: 0 6px 0 #2d3436, 0 0 18px rgba(245, 158, 11, 0.85); }
+}
