@@ -38,41 +38,72 @@ O sistema é dividido em dois ambientes integrados que se comunicam em tempo rea
 
 ## Navegando pelo Repositório
 
-O código-fonte da aplicação está concentrado dentro da pasta [`meu-quiz/`](./meu-quiz/). Abaixo está a organização completa de pastas e arquivos para facilitar a leitura e avaliação do código:
+O código-fonte da aplicação está concentrado dentro da pasta [`meu-quiz/`](./meu-quiz/), organizada da seguinte forma:
 
 ```text
 meu-quiz/
-├── public/                   # Arquivos estáticos públicos servidos diretamente sem processamento
+├── public/
 ├── src/
-│   ├── CSS/                  # Folhas de estilo (CSS3) das páginas, telas do jogo e componentes
-│   ├── assets/               # Imagens, ícones e recursos visuais utilizados na interface
-│   ├── main.jsx              # Ponto de entrada: inicializa e renderiza a aplicação React no DOM
-│   ├── App.jsx               # Roteamento principal: alterna entre a visão do professor e a do aluno
-│   │
-│   ├── # --- Módulo do Professor ---
-│   ├── PaginaProfessor.jsx   # Painel docente para listar, criar, compartilhar e excluir quizzes
-│   ├── ConstrutorBlocos.jsx  # Interface de montagem e edição das perguntas (pilha de questões)
-│   ├── ModalResultados.jsx   # Modal de visualização das respostas dos alunos e métricas da turma
-│   │
-│   ├── # --- Módulo do Estudante e Mecânicas do Jogo ---
-│   ├── PaginaAluno.jsx       # Carrega os dados do quiz pelo ID da URL e gerencia o fluxo do aluno
-│   ├── FaseLogin.jsx         # Tela de identificação/entrada do estudante antes de iniciar a partida
-│   ├── FaseTutorial.jsx      # Tutorial interativo explicando as regras e mecânicas do escritório
-│   ├── JogoGerencia.jsx      # Núcleo da simulação (expediente, funcionários, tickets, energia e quiz diário)
-│   ├── QuestaoArrastar.jsx   # Componente de interação drag-and-drop para questões de ordenar blocos
-│   ├── EventoAleatorio.jsx   # Gerador e exibição de imprevistos/eventos durante o expediente
-│   │
-│   ├── # --- Recursos Visuais e Integração ---
-│   ├── BonecosEscritorio.jsx # Ilustrações vetoriais (SVG) dos personagens e funcionários do jogo
-│   ├── IconesLapis.jsx       # Biblioteca de ícones personalizados da interface
-│   └── supabaseClient.js     # Configuração e instância de conexão com o banco de dados Supabase
-│
-├── index.html                # Estrutura HTML base onde a aplicação React é montada
-├── package.json              # Lista de dependências, bibliotecas e scripts de execução
-└── vite.config.js            # Configurações do bundler e servidor de desenvolvimento Vite
+│   ├── CSS/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── PaginaProfessor.jsx
+│   ├── ConstrutorBlocos.jsx
+│   ├── ModalResultados.jsx
+│   ├── PaginaAluno.jsx
+│   ├── FaseLogin.jsx
+│   ├── FaseTutorial.jsx
+│   ├── JogoGerencia.jsx
+│   ├── QuestaoArrastar.jsx
+│   ├── EventoAleatorio.jsx
+│   ├── BonecosEscritorio.jsx
+│   ├── IconesLapis.jsx
+│   └── supabaseClient.js
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
----
+### Estrutura Geral e Configuração
+
+| Pasta / Arquivo | Função |
+| :--- | :--- |
+| `public/` | Arquivos estáticos públicos servidos diretamente sem processamento |
+| `src/CSS/` | Folhas de estilo (CSS3) das páginas, telas do jogo e componentes |
+| `src/assets/` | Imagens e recursos visuais utilizados na interface |
+| `src/main.jsx` | Ponto de entrada que inicializa e renderiza a aplicação React no DOM |
+| `src/App.jsx` | Roteamento principal que alterna entre a visão do professor e a do aluno |
+| `index.html` | Estrutura HTML base onde a aplicação React é montada |
+| `package.json` | Lista de dependências, bibliotecas e scripts de execução |
+| `vite.config.js` | Configurações do bundler e servidor de desenvolvimento Vite |
+
+### Módulo do Professor
+
+| Arquivo | Função |
+| :--- | :--- |
+| `src/PaginaProfessor.jsx` | Painel docente para listar, criar, compartilhar e excluir quizzes |
+| `src/ConstrutorBlocos.jsx` | Interface de montagem e edição das perguntas (pilha de questões) |
+| `src/ModalResultados.jsx` | Modal de visualização das respostas dos alunos e métricas da turma |
+
+### Módulo do Estudante e Mecânicas do Jogo
+
+| Arquivo | Função |
+| :--- | :--- |
+| `src/PaginaAluno.jsx` | Carrega os dados do quiz pelo ID da URL e gerencia o fluxo do aluno |
+| `src/FaseLogin.jsx` | Tela de identificação/entrada do estudante antes de iniciar a partida |
+| `src/FaseTutorial.jsx` | Tutorial interativo explicando as regras e mecânicas do escritório |
+| `src/JogoGerencia.jsx` | Núcleo da simulação (expediente, equipe, tickets, energia e quiz diário) |
+| `src/QuestaoArrastar.jsx` | Interação *drag-and-drop* para questões de ordenar blocos |
+| `src/EventoAleatorio.jsx` | Gerador e exibição de imprevistos durante o expediente |
+
+### Recursos Visuais e Integração
+
+| Arquivo | Função |
+| :--- | :--- |
+| `src/BonecosEscritorio.jsx` | Ilustrações vetoriais (SVG) dos personagens e funcionários do jogo |
+| `src/IconesLapis.jsx` | Biblioteca de ícones personalizados da interface |
+| `src/supabaseClient.js` | Configuração e instância de conexão com o banco de dados Supabase |
 
 ## Arquitetura e Fluxo de Funcionamento
 
