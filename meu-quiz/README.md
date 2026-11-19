@@ -2,12 +2,32 @@
 
 O sistema é dividido em dois ambientes integrados que se comunicam em tempo real por meio do banco de dados:
 
-1. **Prancheta do Professor (Módulo Docente):** Permite criar projetos avaliativos, elaborar perguntas em três formatos (*Múltipla Escolha*, *Arrastar/Ordenar Blocos* e *Questão Aberta*), gerar um link exclusivo para a turma e acompanhar o ranking e as respostas enviadas pelos estudantes.
-2. **Simulação do Escritório (Ambiente do Estudante):** O aluno acessa o jogo pelo link compartilhado, passa por um tutorial inicial, escolhe 4 funcionários com diferentes especialidades e administra o expediente (08h00 às 18h00). Durante a partida, precisa alocar chamados técnicos (*tickets*), monitorar a energia da equipe, lidar com eventos aleatórios e responder às questões propostas ao final de cada dia simulado para ganhar dinheiro virtual e multiplicadores de desempenho.
+<table>
+  <tr>
+    <th width="50%">1. Prancheta do Professor (Módulo Docente)</th>
+    <th width="50%">2. Simulação do Escritório (Ambiente do Estudante)</th>
+  </tr>
+  <tr>
+    <td valign="top">
+      Permite criar projetos avaliativos, elaborar perguntas em três formatos (<em>Múltipla Escolha</em>, <em>Arrastar/Ordenar Blocos</em> e <em>Questão Aberta</em>), gerar um link exclusivo para a turma e acompanhar o ranking e as respostas enviadas pelos estudantes.
+    </td>
+    <td valign="top">
+      O aluno acessa o jogo pelo link compartilhado, passa por um tutorial inicial, escolhe 4 funcionários com diferentes especialidades e administra o expediente (08h00 às 18h00). Durante a partida, precisa alocar chamados técnicos (<em>tickets</em>), monitorar a energia da equipe, lidar com eventos aleatórios e responder às questões propostas ao final de cada dia simulado para ganhar dinheiro virtual e multiplicadores de desempenho.
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## Tecnologias Utilizadas
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 * **Front-end:** React, JSX, JavaScript (ES6+), HTML5 e CSS3
 * **Ferramentas de Build e Qualidade de Código:** Vite e Oxlint
@@ -56,7 +76,13 @@ meu-quiz/
 
 ## Arquitetura e Fluxo de Funcionamento
 
-1. **Inicialização (`main.jsx` → `App.jsx`):** Ao abrir a aplicação, `main.jsx` carrega o componente raiz `App.jsx`, que inspeciona os parâmetros da URL para definir qual ambiente exibir.
+```text
+[Professor] --> PaginaProfessor.jsx --> ConstrutorBlocos.jsx --> Supabase (gera ?id=...)
+                                                                      |
+[Estudante] --> Link (?id=...) --> PaginaAluno.jsx --> FaseLogin --> FaseTutorial --> JogoGerencia.jsx
+```
+
+1. **Inicialização (`main.jsx` -> `App.jsx`):** Ao abrir a aplicação, `main.jsx` carrega o componente raiz `App.jsx`, que inspeciona os parâmetros da URL para definir qual ambiente exibir.
 2. **Fluxo do Professor (URL sem parâmetro `id`):**
    * `App.jsx` renderiza `PaginaProfessor.jsx` ("Prancheta do Professor"), que consulta os projetos salvos no Supabase.
    * Ao criar ou editar um projeto, `ConstrutorBlocos.jsx` permite adicionar questões em sequência (cada questão corresponde a um dia de simulação no jogo).
@@ -98,4 +124,5 @@ A comunicação com o back-end é centralizada em `src/supabaseClient.js`. A apl
 * **`quizzes`:** Armazena os projetos criados pelos professores, títulos e a estrutura das questões.
 * **`respostas`:** Registra as submissões, pontuações e respostas dos estudantes vinculadas a cada quiz.
 
-Para executar o sistema conectado a uma nova instância do Supabase, configure a URL do projeto e a chave pública (`anon key`) em `src/supabaseClient.js` e habilite as políticas de segurança (**Row Level Security — RLS**) nas tabelas `quizzes` e `respostas`. Por segurança, nunca insira chaves privadas (`service_role`) no código-fonte ou no repositório.
+> [!IMPORTANT]
+> Para executar o sistema conectado a uma nova instância do Supabase, configure a URL do projeto e a chave pública (`anon key`) em `src/supabaseClient.js` e habilite as políticas de segurança (**Row Level Security — RLS**) nas tabelas `quizzes` e `respostas`. Por segurança, nunca insira chaves privadas (`service_role`) no código-fonte ou no repositório.
